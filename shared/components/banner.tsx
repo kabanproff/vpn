@@ -4,6 +4,7 @@ import { cn } from '../lib/utils';
 import Image from 'next/image';
 import { Button } from './button';
 import { DescriptionsBlock } from './descriptions/descriptions-block';
+import { prefix } from '../lib/prefix';
 
 interface Props {
   className?: string;
@@ -21,7 +22,7 @@ export const Banner: React.FC<Props> = ({ className }) => {
         <div>VPN</div>
       </Title>
       <Image
-        src="/banner.png"
+        src={`${prefix}/banner.png`}
         alt="Banner"
         width={541}
         height={210}
@@ -38,7 +39,7 @@ export const Banner: React.FC<Props> = ({ className }) => {
       </Button>
 
       <Image
-        src="/30m.png"
+        src={`${prefix}/30m.png`}
         alt="30m"
         width={136}
         height={42}

@@ -1,3 +1,4 @@
+import { prefix } from '@/shared/lib/prefix';
 import { cn } from '@/shared/lib/utils';
 import Image from 'next/image';
 import React from 'react';
@@ -24,7 +25,7 @@ export const DescriptionsItem: React.FC<Props> = ({
       className={cn('description__item flex pl-[104px] pr-[101px]', className)}
     >
       <Image
-        src={image.imgUrl}
+        src={prefix + '/' + image.imgUrl}
         alt={description}
         width={image.width}
         height={image.height}

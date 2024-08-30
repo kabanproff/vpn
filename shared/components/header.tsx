@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from './container';
 import { Button } from './button';
+import { prefix } from '../lib/prefix';
 
 interface Props {
   className?: string;
@@ -19,7 +20,7 @@ export const Header: React.FC<Props> = ({ className }) => {
     >
       <Container className="flex items-center justify-between h-full px-[16px]">
         <Link href="/#FIRSTPAGE">
-          <Image src="/logo.svg" alt="Logo" width={68} height={32} />
+          <Image src={`${prefix}/logo.svg`} alt="Logo" width={68} height={32} />
         </Link>
         <Button
           variant="primary"

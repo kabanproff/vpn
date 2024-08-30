@@ -1,3 +1,4 @@
+import { prefix } from '@/shared/lib/prefix';
 import { cn } from '@/shared/lib/utils';
 import Image from 'next/image';
 import React from 'react';
@@ -23,7 +24,7 @@ export const AdvantagesItem: React.FC<Props> = ({
       )}
     >
       <Image
-        src={imgUrl}
+        src={prefix + '/' + imgUrl}
         alt={title}
         width={104}
         height={52}

@@ -48,6 +48,11 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+      - name: Echho
+        run: |
+          echo "Using node ${{ matrix.node-version }}"
+          echo "Using ${{ steps.detect-package-manager.outputs.manager }}
+          echo "pwd ${{ ls -la }}"
       - name: Setup Node
         uses: actions/setup-node@v4
         with:

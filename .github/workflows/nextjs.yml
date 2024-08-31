@@ -81,6 +81,15 @@ jobs:
           path: ./out
       - name: Extract repository name
         run: echo "BASE_PATH=/$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)" >> $GITHUB_ENV
+      - name: ECHO Debug
+        run: |
+          echo "$BASE_PATH" - $BASE_PATH
+          ls -la
+          echo "$GITHUB_REPOSITORY" - $GITHUB_REPOSITORY
+          echo "$GITHUB_WORKSPACE" - $GITHUB_WORKSPACE
+          echo "$GITHUB_ENV" - $GITHUB_ENV
+          echo "work process"
+          echo $(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
 
   # Deployment job
   deploy:

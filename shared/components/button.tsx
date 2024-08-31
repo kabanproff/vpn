@@ -1,6 +1,7 @@
 import React, { Children } from 'react';
 import { cn } from '../lib/utils';
 import Link from 'next/link';
+import { prefix } from '../lib/prefix';
 
 interface Props {
   className?: string;
@@ -44,7 +45,7 @@ export const Button: React.FC<Props> = ({
         ' px-[26px] py-[11px] flex items-center justify-center text-white',
         className,
       )}
-      href={href || '/'}
+      href={prefix + (href || '/')}
     >
       {children}
     </a>

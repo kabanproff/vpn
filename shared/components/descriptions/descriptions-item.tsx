@@ -25,7 +25,7 @@ export const DescriptionsItem: React.FC<Props> = ({
       className={cn('description__item flex pl-[104px] pr-[101px]', className)}
     >
       <Image
-        src={prefix + '/' + image.imgUrl}
+        src={prefix + image.imgUrl}
         alt={description}
         width={image.width}
         height={image.height}

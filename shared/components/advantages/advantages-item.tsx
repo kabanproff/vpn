@@ -24,7 +24,7 @@ export const AdvantagesItem: React.FC<Props> = ({
       )}
     >
       <Image
-        src={prefix + '/' + imgUrl}
+        src={prefix + imgUrl}
         alt={title}
         width={104}
         height={52}

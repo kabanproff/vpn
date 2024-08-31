@@ -71,6 +71,8 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+      - name: Extract repository name
+        run: echo "BASE_PATH=/$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)" >> $GITHUB_ENV
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
@@ -79,15 +81,18 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-      - name: Extract repository name
-        run: echo "BASE_PATH=/$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)" >> $GITHUB_ENV
+
+        # $GITHUB_REPOSITORY - kabanproff/vpn
+        # $GITHUB_WORKSPACE - /home/runner/work/vpn/vpn
+        # $GITHUB_ENV -/home/runner/work/_temp/_runner_file_commands/set_env_0bebca52-e35a-4dc8-90ef-0ce079b6c150 - /home/runner/work/_temp/_runner_file_commands/set_env_0bebca52-e35a-4dc8-90ef-0ce079b6c150
+        # $(echo $GITHUB_REPOSITORY | cut -d '/' -f 2) - vpn
       - name: ECHO Debug
         run: |
-          echo "$BASE_PATH" - $BASE_PATH
+          echo "BASE_PATH" - $BASE_PATH
           ls -la
-          echo "$GITHUB_REPOSITORY" - $GITHUB_REPOSITORY
-          echo "$GITHUB_WORKSPACE" - $GITHUB_WORKSPACE
-          echo "$GITHUB_ENV" - $GITHUB_ENV
+          echo "GITHUB_REPOSITORY" - $GITHUB_REPOSITORY
+          echo "GITHUB_WORKSPACE" - $GITHUB_WORKSPACE
+          echo "GITHUB_ENV" - $GITHUB_ENV
           echo "work process"
           echo $(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
 

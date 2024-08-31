@@ -34,8 +34,9 @@ export const Button: React.FC<Props> = ({
   size = 'sm',
   href,
 }) => {
+  // TODO перевёл на обычные ссылки т.к. гит релодится с хэшем
   return (
-    <Link
+    <a
       className={cn(
         buttonVariants[variant],
         buttonSizes[size],
@@ -46,6 +47,6 @@ export const Button: React.FC<Props> = ({
       href={href || '/'}
     >
       {children}
-    </Link>
+    </a>
   );
 };

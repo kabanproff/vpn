@@ -2,17 +2,15 @@
 import { Advantages } from '@/shared/components/advantages/advantages';
 import { Banner } from '@/shared/components/banner';
 import { Button } from '@/shared/components/button';
-import { Modal } from '@/shared/components/modal';
 import { RadioBtns } from '@/shared/components/radio-btns';
 import { useUsers } from '@/shared/hooks/useUsers';
-import { useState } from 'react';
+import { useUsersStore } from '@/shared/store/users';
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
+  // const { users, checked, setChecked } = useUsers();
   const { users, checked, setChecked } = useUsers();
-  if (isOpen) {
-    return <Modal setIsOpen={setIsOpen} checked={checked} />;
-  }
+  console.log(users, checked);
+
   return (
     <main className="max-w-[892px] m-auto">
       <Banner />
@@ -22,10 +20,12 @@ export default function Home() {
       </h3>
       <RadioBtns users={users} checked={checked} setChecked={setChecked} />
       <Button
-        className="text-two mb-6 font-bold font-poppins"
+        className="text-two mb-6 font-bold font-poppins w-full"
         rounded={'bt'}
         variant="secondary"
         size="lg"
+        disabled={!checked.name}
+        href={'/user/' + checked.name}
       >
         Get VPN
       </Button>

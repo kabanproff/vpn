@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { Children, useMemo } from 'react';
 import { cn } from '../lib/utils';
 import Link from 'next/link';
 import { prefix } from '../lib/prefix';
@@ -10,6 +10,9 @@ interface Props {
   rounded?: 'hd' | 'bt';
   size?: 'sm' | 'lg';
   href?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  type?: 'button' | 'submit';
 }
 
 const buttonVariants = {
@@ -33,21 +36,34 @@ export const Button: React.FC<Props> = ({
   variant,
   rounded = 'bt',
   size = 'sm',
-  href,
+  href = '',
+  disabled = false,
+  type,
+  ...rest
 }) => {
+  const Wrapper = href[1] === '#' ? 'a' : disabled || !href ? 'button' : Link;
+
+  const hrefWithPrefix = useMemo(() => {
+    if (!href) return '';
+    return prefix + href;
+  }, [href]);
+
   // TODO перевёл на обычные ссылки т.к. гит релодится с хэшем
   return (
-    <a
+    <Wrapper
       className={cn(
         buttonVariants[variant],
         buttonSizes[size],
         buttonRounded[rounded],
         ' px-[26px] py-[11px] flex items-center justify-center text-white',
+        disabled && 'opacity-50 cursor-not-allowed user-select-none',
         className,
       )}
-      href={prefix + (href || '/')}
+      disabled={disabled}
+      href={hrefWithPrefix}
+      {...rest}
     >
       {children}
-    </a>
+    </Wrapper>
   );
 };

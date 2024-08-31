@@ -1,13 +1,13 @@
 'use client';
 import React, { useContext, useEffect, useState } from 'react';
 import { cn } from '../lib/utils';
-import { User } from '../hooks/useUsers';
+import { User } from '../store/users';
 
 interface Props {
   className?: string;
   users: User[];
-  checked: string;
-  setChecked: (value: string) => void;
+  checked: User;
+  setChecked: (value: User) => void;
 }
 
 export const RadioBtns: React.FC<Props> = ({
@@ -16,8 +16,6 @@ export const RadioBtns: React.FC<Props> = ({
   checked,
   setChecked,
 }) => {
-  console.log(console);
-
   if (!users) return <div>Loading...</div>;
 
   return (
@@ -26,24 +24,22 @@ export const RadioBtns: React.FC<Props> = ({
         Choose <span className="text-primary">your NAme</span>
       </div>
       <div className="radio-btns__list">
-        {/* {<pre>{JSON.stringify(users, null, 2)}</pre>} */}
-        {users.length &&
+        {users.length > 0 &&
           users.map((item, index) => (
             <label
               key={item.email}
               className="radio-btns__item shadow-descr rounded-bt min-h-[88px] mb-4 cursor-pointer flex items-center gap-2 px-3"
-              onClick={() => setChecked(item.name)}
+              onClick={() => setChecked(item)}
             >
               <input
                 type="radio"
                 id={`radio-${index}`}
                 name="name"
                 className="hidden"
-                value={item.value}
-                defaultChecked={item.name === checked}
+                defaultChecked={item.name === checked.name}
               />
               <svg
-                className={`radio-btns__check ${item.name === checked ? 'text-orange' : 'text-transparent'}`}
+                className={`radio-btns__check ${item.name === checked.name ? 'text-orange' : 'text-transparent'}`}
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -64,8 +60,6 @@ export const RadioBtns: React.FC<Props> = ({
                   fill="currentColor"
                 />
               </svg>
-
-              {/* <span className=" rounded-full w"></span> */}
               {item.name}
             </label>
           ))}

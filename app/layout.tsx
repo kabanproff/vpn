@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Roboto } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/shared/components/header';
+import { prefix } from '@/shared/lib/prefix';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -23,17 +24,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
+  console.log('modalmodal');
+
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/icon.svg" sizes="any" />
+        <link rel="icon" href={prefix + `/icon.svg`} sizes="any" />
       </head>
       <body className={`${poppins.variable} ${roboto.variable}`}>
         <Header />
         {children}
+        {modal}
       </body>
     </html>
   );

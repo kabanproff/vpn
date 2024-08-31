@@ -19,9 +19,9 @@ export const Header: React.FC<Props> = ({ className }) => {
       )}
     >
       <Container className="flex items-center justify-between h-full px-[16px]">
-        <Link href="/#FIRSTPAGE">
+        <a href="/#FIRSTPAGE">
           <Image src={`${prefix}/logo.svg`} alt="Logo" width={68} height={32} />
-        </Link>
+        </a>
         <Button
           variant="primary"
           rounded={'hd'}

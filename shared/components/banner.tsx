@@ -12,11 +12,17 @@ interface Props {
 
 export const Banner: React.FC<Props> = ({ className }) => {
   return (
-    <div className={cn('pt-[75px] pb-[73px]', className)} id="FIRSTPAGE">
+    <div
+      className={cn(
+        'pt-[13px] lg:pt-[75px] pb-[38px] lg:pb-[73px]',
+        className,
+      )}
+      id="FIRSTPAGE"
+    >
       <Title
         tag="h1"
         sz="lg"
-        className="text-center max-w-[396px] m-auto -mb-[8px]"
+        className="text-center max-w-[396px] m-auto -mb-[10px] lg:-mb-[8px]"
       >
         Access <span className="text-primary">everything securely</span> with
         <div>VPN</div>
@@ -26,10 +32,10 @@ export const Banner: React.FC<Props> = ({ className }) => {
         alt="Banner"
         width={541}
         height={210}
-        className="m-auto mb-[15px] relative left-4"
+        className="max-w-[541px] -translate-x-[47.2%] lg:translate-x-0 lg:m-auto mb-[18px] lg:mb-[15px] relative left-1/2 lg:left-4"
       />
       <Button
-        className="text-two max-w-[396px] m-auto mb-6 font-bold font-poppins"
+        className="pl-[31px] lg:pl-[26px] text-two max-w-[396px] m-auto mb-6 font-bold font-poppins"
         rounded={'bt'}
         variant="secondary"
         size="lg"

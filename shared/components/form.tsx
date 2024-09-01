@@ -43,11 +43,13 @@ export const Form: React.FC<Props> = ({ className, user }) => {
       <div className="text-one font-poppins font-bold mb-8 uppercase">
         Your name
       </div>
-      <div className="font-poppins text-sb mb-[34px]">{user.name}</div>
+      <div className="font-poppins text-sb mb-[31px] lg:mb-[34px]">
+        {user.name}
+      </div>
       <input
         {...register('email')}
         className={cn(
-          'block text-sb w-full mb-[10px] text-grey font-medium border  pt-[13px] pb-[14px] px-4 rounded-bt focus:outline-0',
+          'block text-sb w-full mb-[10px] text-grey font-medium border pt-[17px] lg:pt-[13px] pb-[11px] lg:pb-[14px] px-4 rounded-bt focus:outline-0',
           errors.email ? 'border-red-500' : 'border-grey',
         )}
         placeholder="Enter your email"
@@ -64,13 +66,13 @@ export const Form: React.FC<Props> = ({ className, user }) => {
         {errors?.email?.message}
       </p>
 
-      <div className="text-grey text-[13px] leading-[18px] mb-[38px]">
+      <div className="text-grey text-[13px] leading-[18px] mb-[38px] pl-[24px] relative">
         <Image
           src={prefix + '/lock.svg'}
           alt="lock"
           width={16}
           height={16}
-          className="mr-2 inline-block -mt-[4px]"
+          className="top-[8px] lg:-top-[4px] absolute left-0"
         ></Image>
         Your information is 100% secure. We don’t share your personal
         information.

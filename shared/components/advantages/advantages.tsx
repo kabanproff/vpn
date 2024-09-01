@@ -35,7 +35,10 @@ const advantages = [
 export const Advantages: React.FC<Props> = ({ className }) => {
   return (
     <div
-      className={cn('advantages grid-cols-2 grid gap-x-7 mx-[6px]', className)}
+      className={cn(
+        'advantages lg:grid-cols-2 grid gap-x-7 lg:mx-[6px]',
+        className,
+      )}
     >
       {advantages.map((advantage, ind) => (
         <AdvantagesItem

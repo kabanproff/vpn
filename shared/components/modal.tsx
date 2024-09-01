@@ -14,16 +14,16 @@ export const Modal: React.FC<Props> = ({ className, children }) => {
   const router = useRouter();
   return (
     <div
-      className="w-full h-[100vh] flex fixed bg-white
+      className="w-full px-4 lg:px-0 h-[100vh] flex fixed bg-white
     top-0 left-0"
     >
       <div
         className={cn(
-          'modal max-w-[892px] w-full m-auto min-h-[75vh]',
+          'modal max-w-[892px] w-full m-auto min-h-[78vh] lg:min-h-[75vh]',
           className,
         )}
       >
-        <div className="relative h-8">
+        <div className="relative h-[35px] lg:h-8">
           <button
             className="block ml-auto mr-[4px] mb-6"
             onClick={() => router.back()}

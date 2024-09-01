@@ -19,7 +19,7 @@ export const AdvantagesItem: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'advantages__item text-center border-b-grey border-b pt-4 pb-5',
+        'advantages__item text-center border-b-grey border-b pt-4 pb-3 lg:pb-5',
         className,
       )}
     >
@@ -28,9 +28,9 @@ export const AdvantagesItem: React.FC<Props> = ({
         alt={title}
         width={104}
         height={52}
-        className="m-auto mb-2"
+        className="m-auto mb-[18px] lg:mb-2"
       />
-      <div className="div text-one font-bold uppercase ">
+      <div className="div text-one font-bold uppercase">
         <div className="text-orange tracking-[1.3px]">
           {title.split(' ')[0]}
         </div>

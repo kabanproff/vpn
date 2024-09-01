@@ -72,7 +72,7 @@ export const Form: React.FC<Props> = ({ className, user }) => {
           alt="lock"
           width={16}
           height={16}
-          className="top-[8px] lg:-top-[4px] absolute left-0"
+          className="top-[20%] lg:-top-[4px] absolute left-0"
         ></Image>
         Your information is 100% secure. We don’t share your personal
         information.

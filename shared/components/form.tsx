@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { prefix } from '../lib/prefix';
 import { cn } from '../lib/utils';
@@ -16,7 +16,13 @@ interface Props {
 
 const schema = yup
   .object({
-    email: yup.string().email().required(),
+    email: yup
+      .string()
+      .matches(
+        /^[A-Z0-9!._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        'Invalid email format, need to: text@text.com',
+      )
+      .required(),
   })
   .required();
 
@@ -25,6 +31,7 @@ export const Form: React.FC<Props> = ({ className, user }) => {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -44,6 +51,9 @@ export const Form: React.FC<Props> = ({ className, user }) => {
           errors.email ? 'border-red-500' : 'border-grey',
         )}
         placeholder="Enter your email"
+        onInput={() => {
+          console.log('email', getValues('email'));
+        }}
       />
       <p
         className={cn(
